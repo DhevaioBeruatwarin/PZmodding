@@ -1,0 +1,8 @@
+version=1
+title=MaxAllSkills
+description=Instantly skills maxing.
+description=
+description=
+description=
+tags=
+visibility=public
