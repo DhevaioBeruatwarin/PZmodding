@@ -1,8 +1,8 @@
 version=1
-title=MaxAllSkills
+title=MaxAllSkills [B42]
 description=Instantly skills maxing.
 description=
 description=
 description=
-tags=
+tags= cheat
 visibility=public
