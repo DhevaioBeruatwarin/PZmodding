@@ -1,19 +1,21 @@
-function MaxAllSkills()
+local function MaxAllSkills(player)
+    local xp = player:getXp()
+    local pf = PerkFactory.PerkList
 
-	getPlayer():Say(getText("UI_CMRB_Message_ChangedLevel"))
+    for i = pf:size()-1, 0, -1 do
+        local perk = pf:get(i):getType()
 
-	local xp = getPlayer():getXp()
-	
-	local pf = PerkFactory.PerkList
-	local pfSize = PerkFactory.PerkList:size()	
-	for i = pfSize-1, 0, -1 do 
-		local obj = pf:get(i)
-		local skill = obj:getType()
-		
-		getPlayer():level0(skill) 
-		getPlayer():getXp():setXPToLevel(skill, 0) 
-		for i = 1,10 do 
-			getPlayer():LevelPerk(skill, false)
-		end
-	end
+        player:level0(perk)
+        xp:setXPToLevel(perk, 0)
+
+        for j = 1, 10 do
+            player:LevelPerk(perk, false)
+        end
+    end
+
+    player:Say("All skills maxed")
 end
+
+Events.OnCreatePlayer.Add(function(playerIndex, player)
+    MaxAllSkills(player)
+end)
